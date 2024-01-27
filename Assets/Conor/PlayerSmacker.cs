@@ -10,6 +10,7 @@ public class PlayerSmacker : MonoBehaviour
     public Animator animator;
     public Material normalMaterial;
     public Material invisibleMaterial;
+    public PlayerScript2 playerScript2;
 
     [Header("Settings")]
     public float timerToHit = 0;
@@ -23,6 +24,7 @@ public class PlayerSmacker : MonoBehaviour
 
     private void Update()
     {
+        //if(playerScript2.rb.velocity == 0)
         TimerToHit();
 
         timerToHit += Time.deltaTime;
