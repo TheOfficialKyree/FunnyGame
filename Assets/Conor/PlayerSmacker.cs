@@ -81,11 +81,11 @@ public class PlayerSmacker : MonoBehaviour
         canSmack = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if(canSmack == true)
+            if (canSmack == true)
             {
                 //activate ragdoll physics
                 Debug.Log("This hit the player");
