@@ -6,12 +6,13 @@ public class MenuManager : MonoBehaviour
 {
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
+    [SerializeField] Animator animator;
 
     #region - Main Menu -
 
-    public void StartGame()
+    public void StartAnim()
     {
-        SceneManager.LoadScene(1);
+        animator.SetTrigger("Fade");
     }    
     
     public void QuitGame()
