@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript2 : MonoBehaviour
 {
     public Animator anim;
-    private Rigidbody rb;
+    public Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
 
