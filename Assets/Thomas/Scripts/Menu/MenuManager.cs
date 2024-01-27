@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    bool paused;
+    public static bool isPaused = false;
+    public GameObject pauseMenuUI;
 
     #region - Main Menu -
 
@@ -21,26 +23,37 @@ public class MenuManager : MonoBehaviour
 
     #region - Pause Menu -
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        //If start button or escape pressed
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
-            if (!paused)
+            if (isPaused)
             {
-                paused = true;
-                Time.timeScale = 0.0f;
+                Resume();
             }
             else
             {
-                paused = true;
-                Time.timeScale = 1.0f;
+                Pause();
             }
         }
+    }
 
-        if (paused == true)
-        {
-            // Pause menu
-        }
+    public void Resume()
+    {
+        //Take away UI and set time back to normal
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
+    public void Pause()
+    {
+        //Add UI and set time to stopped
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
     }
 
     public void LoadMenuScene()
