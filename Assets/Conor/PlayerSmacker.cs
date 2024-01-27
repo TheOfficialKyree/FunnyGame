@@ -12,6 +12,8 @@ public class PlayerSmacker : MonoBehaviour
     public Material invisibleMaterial;
     public PlayerScript2 playerScript2;
 
+    public BoxCollider box;
+
     [Header("Settings")]
     public float timerToHit = 0;
     public bool canSmack = false;
@@ -55,12 +57,16 @@ public class PlayerSmacker : MonoBehaviour
         // Starts the smacking animation
         animator.SetBool("isSmacking", true);
 
+        box.enabled = true;
+
         // Wait
         yield return new WaitForSeconds(0.75f);
 
         // Resets The Settigs
         animator.SetBool("isSmacking", false);
         timerToHit = 0;
+
+        box.enabled = false;
     }
 
     private IEnumerator SetMaterial()

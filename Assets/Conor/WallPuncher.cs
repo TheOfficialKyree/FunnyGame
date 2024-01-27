@@ -1,32 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WallPuncher : MonoBehaviour
-{ 
-    public Animator animator;
-
-    private void Start()
+{
+    private void OnCollisionEnter(Collision collision)
     {
-        animator = GetComponent<Animator>();
-
-        StartCoroutine(MoveOut());
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //Activate Ragdol Physics
+        }
     }
-
-    private IEnumerator MoveOut()
-    {
-        animator.SetBool("isSlamming", true);
-
-        yield return new WaitForSeconds(1.25f);
-
-        animator.SetBool("isSlamming", false);
-
-        yield return new WaitForSeconds(3);
-
-        StartCoroutine(MoveOut());
-    }
-
 }
