@@ -13,6 +13,7 @@ public class PlayerSmacker : MonoBehaviour
 
     [Header("Settings")]
     public float timerToHit = 0;
+    public bool canSmack = false;
 
     private void Start()
     {
@@ -38,19 +39,25 @@ public class PlayerSmacker : MonoBehaviour
 
     public void StartPlayerSmack()
     {
-        StartCoroutine(StartTimerToSmack());
+        StartCoroutine(StartSmack());
     }
 
-    private IEnumerator StartTimerToSmack()
+    private IEnumerator StartSmack()
     {
+        // Sets material to visible
         StartCoroutine(SetMaterial());
+       
+        //Sets can smack to true
+        StartCoroutine(SetSmackingTrue()); 
 
+        // Starts the smacking animation
         animator.SetBool("isSmacking", true);
 
+        // Wait
         yield return new WaitForSeconds(0.75f);
 
+        // Resets The Settigs
         animator.SetBool("isSmacking", false);
-
         timerToHit = 0;
     }
 
@@ -63,8 +70,24 @@ public class PlayerSmacker : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 
+    private IEnumerator SetSmackingTrue()
+    {
+        canSmack = true;
+
+        yield return new WaitForSeconds(2);
+
+        canSmack = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-      
+        if(other.gameObject.CompareTag("Player"))
+        {
+            if(canSmack == true)
+            {
+                //activate ragdoll physics
+                Debug.Log("This hit the player");
+            }
+        }
     }
 }
