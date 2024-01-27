@@ -37,7 +37,6 @@ public class Cannon : MonoBehaviour
                 projectileRb.velocity = direction * projectileSpeed;
             }
         }
-
         timer = timerNormal;
     }
 }
