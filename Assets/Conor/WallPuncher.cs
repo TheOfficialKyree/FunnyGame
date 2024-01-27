@@ -8,7 +8,7 @@ public class WallPuncher : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Activate Ragdol Physics
+            //Activate Ragdoll Physics
         }
     }
 }
