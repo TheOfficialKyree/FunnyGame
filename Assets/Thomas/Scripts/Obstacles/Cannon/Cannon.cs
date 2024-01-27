@@ -5,11 +5,13 @@ public class Cannon : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform spawningPos;  // Assuming you use a Transform instead of GameObject for spawning position
     public float projectileSpeed = 10f;
+    [SerializeField] float timer, timerNormal;
 
     void Update()
     {
-        // Check for user input to fire the cannon
-        if (Input.GetKeyDown(KeyCode.Space))
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
         {
             FireProjectile();
         }
@@ -35,5 +37,7 @@ public class Cannon : MonoBehaviour
                 projectileRb.velocity = direction * projectileSpeed;
             }
         }
+
+        timer = timerNormal;
     }
 }
