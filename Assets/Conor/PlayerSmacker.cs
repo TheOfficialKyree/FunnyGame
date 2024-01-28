@@ -10,7 +10,6 @@ public class PlayerSmacker : MonoBehaviour
     public GameObject playerSmacker;
     public Rigidbody playerRBody;
     public Animator animator;
-    public Transform spawnLocation;
 
     [Header("Material References")]
     public Material normalMaterial;
@@ -50,8 +49,6 @@ public class PlayerSmacker : MonoBehaviour
 
         // Checks if the timer has reached the limit to initate the smack
         TimerTillSmack();
-        
-        transform.position = Vector3.MoveTowards(transform.position, spawnLocation.position, speed);
     }
 
     public void TimerTillSmack()

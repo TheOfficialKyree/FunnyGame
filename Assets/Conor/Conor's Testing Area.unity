@@ -238,6 +238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f7e53e707612646a8da24cdc8e0391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1726055488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3440439473323611669, guid: 34b6c2f25a3b8ff4f80ef471fca8795f, type: 3}
+  m_PrefabInstance: {fileID: 3440439474827170349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1726945557
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3440439473837145425, guid: 34b6c2f25a3b8ff4f80ef471fca8795f, type: 3}
+      propertyPath: lookatdis
+      value: 
+      objectReference: {fileID: 1726055488}
     - target: {fileID: 3440439475087210588, guid: 34b6c2f25a3b8ff4f80ef471fca8795f, type: 3}
       propertyPath: m_Name
       value: Player Character
@@ -516,6 +525,14 @@ PrefabInstance:
     - target: {fileID: 46585855057185085, guid: 30ea8685a14e47a488157c1dbf40b657, type: 3}
       propertyPath: m_Name
       value: fly swatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302024347647189959, guid: 30ea8685a14e47a488157c1dbf40b657, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -391
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302024347647189959, guid: 30ea8685a14e47a488157c1dbf40b657, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6059655285207428978, guid: 30ea8685a14e47a488157c1dbf40b657, type: 3}
       propertyPath: applyForce
