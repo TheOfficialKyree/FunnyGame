@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RagdollOnOff : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RagdollOnOff : MonoBehaviour
     {
         GetRagdollBits();
         RagdollModeOff();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,7 +21,16 @@ public class RagdollOnOff : MonoBehaviour
         if (collision.gameObject.CompareTag("Obsticle"))
         {
             RagdollModeOn();
+            StartCoroutine(Example());
         }
+    }
+
+    IEnumerator Example()
+    {
+        Debug.Log(Time.time);
+        yield return new WaitForSeconds(5);
+        Debug.Log(Time.time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     Collider[] ragdollColliders;
@@ -47,6 +58,8 @@ public class RagdollOnOff : MonoBehaviour
         
         mainCoillider.enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        
     }
 
     void RagdollModeOff()
