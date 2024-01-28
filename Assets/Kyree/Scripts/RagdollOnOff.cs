@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class RagdollOnOff : MonoBehaviour
 {
-    public BoxCollider mainCoillider;
+    public CapsuleCollider mainCoillider;
     public GameObject characterRig;
     public Animator characterAnimator;
+    
     void Start()
     {
         GetRagdollBits();
         RagdollModeOff();
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Hit")
+        if (collision.gameObject.CompareTag("Obsticle"))
         {
             RagdollModeOn();
         }
@@ -29,6 +24,7 @@ public class RagdollOnOff : MonoBehaviour
 
     Collider[] ragdollColliders;
     Rigidbody[] limbsRigidbodies;
+
     void GetRagdollBits()
     {
         ragdollColliders = characterRig.GetComponentsInChildren<Collider>();
