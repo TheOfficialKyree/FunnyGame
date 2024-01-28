@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class FadeMenu : MonoBehaviour
 {
-    public void StartGame()
+    public void StartGameLevel1()
     {
         SceneManager.LoadScene(1);
+    }
+    
+    public void StartGameLevel2()
+    {
+        SceneManager.LoadScene(2);
     }
 }

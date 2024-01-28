@@ -5,16 +5,45 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public static bool isPaused = false;
-    public GameObject pauseMenuUI;
+    public GameObject pauseMenuUI, mainMenuUI, levelSelectUI, controlsUI;
     [SerializeField] Animator animator;
 
     #region - Main Menu -
 
-    public void StartAnim()
+    public void OpenLevelSelect()
     {
-        animator.SetTrigger("Fade");
-    }    
-    
+        levelSelectUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void CloseLevelSelect()
+    {
+        levelSelectUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        controlsUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void CloseControls()
+    {
+        controlsUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
+    public void StartAnim1()
+    {
+        animator.SetTrigger("Fade1");
+    }
+
+    public void StartAnim2()
+    {
+        animator.SetTrigger("Fade2");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
