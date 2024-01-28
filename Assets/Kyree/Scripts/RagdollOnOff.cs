@@ -1,3 +1,4 @@
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,18 @@ public class RagdollOnOff : MonoBehaviour
     public CapsuleCollider mainCoillider;
     public GameObject characterRig;
     public Animator characterAnimator;
+    public vThirdPersonInput input;
     
     void Start()
     {
         GetRagdollBits();
         RagdollModeOff();
+<<<<<<< HEAD
         
+=======
+
+        input = GetComponent<vThirdPersonInput>();
+>>>>>>> 339c708b4dbd47a450221c606fa0f696f46ed96b
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,6 +51,7 @@ public class RagdollOnOff : MonoBehaviour
     void RagdollModeOn()
     {
         characterAnimator.enabled = false;
+        input.enabled = false;
 
         foreach (Collider col in ragdollColliders)
         {
@@ -64,6 +72,8 @@ public class RagdollOnOff : MonoBehaviour
 
     void RagdollModeOff()
     {
+        input.enabled = true;
+
         foreach(Collider col in ragdollColliders)
         {
             col.enabled = false;

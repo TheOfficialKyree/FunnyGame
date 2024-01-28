@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSmacker : MonoBehaviour
 {
     [Header("Normal References")]
     public GameObject playerSmacker;
+    public Rigidbody playerRBody;
     public Animator animator;
 
     [Header("Material References")]
@@ -14,24 +16,23 @@ public class PlayerSmacker : MonoBehaviour
     public Material invisibleMaterial;
 
     [Header("Script References")]
-    public PlayerScript2 playerScript2;
+    public ApplyForce applyForce;
 
     [Header("Settings")]
     public float timerToHit = 0;
-    public bool canSmack = false;
+    public float speed = 50;
 
     private void Start()
     {
-        gameObject.GetComponent<MeshRenderer>().material = invisibleMaterial;
+        //gameObject.GetComponent<MeshRenderer>().material = invisibleMaterial;
         animator = GetComponent<Animator>();
-        //playerScript2 = GameObject.FindObjectOfType<PlayerScript2>();
     }
 
     private void Update()
     {
         // If the player doesnt move, then start the timer.
-        /*
-        if(playerScript2.isMoving == false)
+
+        if(playerRBody.velocity.magnitude >= 0)
         {
             timerToHit += Time.deltaTime;
         }
@@ -39,7 +40,12 @@ public class PlayerSmacker : MonoBehaviour
         {
             timerToHit -= Time.deltaTime;
         }
-        */
+
+        // Failsafe incase it goes below zero
+        if(timerToHit <= 0)
+        {
+            timerToHit = 0;
+        }
 
         // Checks if the timer has reached the limit to initate the smack
         TimerTillSmack();
@@ -61,11 +67,9 @@ public class PlayerSmacker : MonoBehaviour
 
     private IEnumerator StartSmack()
     {
+
         // Sets material to visible
-        StartCoroutine(SetMaterial());
-       
-        //Sets can smack to true
-        StartCoroutine(SetSmackingTrue()); 
+        //StartCoroutine(SetMaterial());
 
         // Starts the smacking animation
         animator.SetBool("isSmacking", true);
@@ -87,24 +91,12 @@ public class PlayerSmacker : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material = invisibleMaterial;
     }
 
-    private IEnumerator SetSmackingTrue()
-    {
-        canSmack = true;
-
-        yield return new WaitForSeconds(2);
-
-        canSmack = false;
-    }
-
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (canSmack == true)
-            {
-                //activate ragdoll physics
-                Debug.Log("This hit the player");
-            }
+            applyForce.ApplyForceToPlayer(100);
+            Debug.Log("This hit the player");
         }
     }
 }
