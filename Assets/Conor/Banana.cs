@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class Banana : MonoBehaviour
 {
+    public ApplyForce applyForce;
+
+    private void Start()
+    {
+        applyForce = FindObjectOfType<ApplyForce>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            // Add ragdoll physiscs
+            applyForce.ApplyForceToPlayer(80);
 
             Destroy(gameObject);
         }

@@ -1,34 +1,48 @@
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RagdollOnOff : MonoBehaviour
 {
-    public BoxCollider mainCoillider;
+    public CapsuleCollider mainCoillider;
     public GameObject characterRig;
     public Animator characterAnimator;
+    public vThirdPersonInput input;
+    
     void Start()
     {
         GetRagdollBits();
         RagdollModeOff();
-    }
-
-    
-    void Update()
-    {
+<<<<<<< HEAD
         
+=======
+
+        input = GetComponent<vThirdPersonInput>();
+>>>>>>> 339c708b4dbd47a450221c606fa0f696f46ed96b
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Hit")
+        if (collision.gameObject.CompareTag("Obsticle"))
         {
             RagdollModeOn();
+            StartCoroutine(Example());
         }
+    }
+
+    IEnumerator Example()
+    {
+        Debug.Log(Time.time);
+        yield return new WaitForSeconds(5);
+        Debug.Log(Time.time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     Collider[] ragdollColliders;
     Rigidbody[] limbsRigidbodies;
+
     void GetRagdollBits()
     {
         ragdollColliders = characterRig.GetComponentsInChildren<Collider>();
@@ -37,6 +51,7 @@ public class RagdollOnOff : MonoBehaviour
     void RagdollModeOn()
     {
         characterAnimator.enabled = false;
+        input.enabled = false;
 
         foreach (Collider col in ragdollColliders)
         {
@@ -51,10 +66,14 @@ public class RagdollOnOff : MonoBehaviour
         
         mainCoillider.enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        
     }
 
     void RagdollModeOff()
     {
+        input.enabled = true;
+
         foreach(Collider col in ragdollColliders)
         {
             col.enabled = false;
