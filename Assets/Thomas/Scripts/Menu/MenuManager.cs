@@ -88,7 +88,20 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMenuScene()
     {
+        Resume();
         SceneManager.LoadScene(0);
+    }
+
+    public void RestartLevel1()
+    {
+        Resume();
+        SceneManager.LoadScene(1);
+    }
+
+    public void RestartLevel2()
+    {
+        Resume();
+        SceneManager.LoadScene(2);
     }
 
     #endregion
