@@ -15,12 +15,11 @@ public class RagdollOnOff : MonoBehaviour
     {
         GetRagdollBits();
         RagdollModeOff();
-<<<<<<< HEAD
+
         
-=======
 
         input = GetComponent<vThirdPersonInput>();
->>>>>>> 339c708b4dbd47a450221c606fa0f696f46ed96b
+
     }
 
     private void OnCollisionEnter(Collision collision)
