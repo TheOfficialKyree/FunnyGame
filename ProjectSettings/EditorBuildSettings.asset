@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Thomas/Scenes/Main Menu.unity
     guid: 43a975810c6e2494587381a44da870e9
   - enabled: 1
-    path: Assets/Thomas/Scenes/Thomas Testing Area.unity
-    guid: 8a849bc048d2429429677e6ec0dedf16
+    path: Assets/Thomas/Scenes/TropicalIslands_Demo.unity
+    guid: c6e962c8d76318a4e905c834746358a9
   m_configObjects: {}

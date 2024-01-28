@@ -10,16 +10,12 @@ public class RagdollOnOff : MonoBehaviour
     public GameObject characterRig;
     public Animator characterAnimator;
     public vThirdPersonInput input;
-    
+
     void Start()
     {
         GetRagdollBits();
         RagdollModeOff();
-
-        
-
         input = GetComponent<vThirdPersonInput>();
-
     }
 
     private void OnCollisionEnter(Collision collision)

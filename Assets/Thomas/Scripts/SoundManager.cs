@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] squeakyHit;
     public AudioClip[] timeRunningOut;
 
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, bananaSlip.Length);
             audioSource.PlayOneShot(bananaSlip[randomIndex], 1);
+            Debug.Log("YES");
         }
     }
 
@@ -36,6 +37,7 @@ public class SoundManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, bonk.Length);
             audioSource.PlayOneShot(bonk[randomIndex], 1);
+            Debug.Log("YES");
         }
     }
 
@@ -45,6 +47,7 @@ public class SoundManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, cannon.Length);
             audioSource.PlayOneShot(cannon[randomIndex], 1);
+            Debug.Log("YES");
         }
     }
 
@@ -54,6 +57,7 @@ public class SoundManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, lazer.Length);
             audioSource.PlayOneShot(lazer[randomIndex], 1);
+            Debug.Log("YES");
         }
     }
 
@@ -62,7 +66,8 @@ public class SoundManager : MonoBehaviour
         if (menuMove.Length > 0)
         {
             int randomIndex = Random.Range(0, menuMove.Length);
-            audioSource.PlayOneShot(cannon[randomIndex], 1);
+            audioSource.PlayOneShot(menuMove[randomIndex], 1);
+            Debug.Log("YES");
         }
     }
 

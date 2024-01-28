@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenuUI, mainMenuUI, levelSelectUI, controlsUI;
     [SerializeField] Animator animator;
+    [SerializeField] SoundManager soundManager;
 
     #region - Main Menu -
 
@@ -14,38 +15,45 @@ public class MenuManager : MonoBehaviour
     {
         levelSelectUI.SetActive(true);
         mainMenuUI.SetActive(false);
+        soundManager.PlayMenuMove();
     }
 
     public void CloseLevelSelect()
     {
         levelSelectUI.SetActive(false);
         mainMenuUI.SetActive(true);
+        soundManager.PlayMenuMove();
     }
 
     public void OpenControls()
     {
         controlsUI.SetActive(true);
         mainMenuUI.SetActive(false);
+        soundManager.PlayMenuMove();
     }
 
     public void CloseControls()
     {
         controlsUI.SetActive(false);
         mainMenuUI.SetActive(true);
+        soundManager.PlayMenuMove();
     }
 
     public void StartAnim1()
     {
         animator.SetTrigger("Fade1");
+        soundManager.PlayMenuMove();
     }
 
     public void StartAnim2()
     {
         animator.SetTrigger("Fade2");
+        soundManager.PlayMenuMove();
     }
 
     public void QuitGame()
     {
+        soundManager.PlayMenuMove();
         Application.Quit();
     }
 

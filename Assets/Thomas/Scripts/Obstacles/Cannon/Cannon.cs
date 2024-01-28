@@ -7,6 +7,8 @@ public class Cannon : MonoBehaviour
     public float projectileSpeed = 10f;
     [SerializeField] float timer, timerNormal;
 
+    [SerializeField] SoundManager soundManager;
+
     void Update()
     {
         timer -= Time.deltaTime;
@@ -19,6 +21,8 @@ public class Cannon : MonoBehaviour
 
     void FireProjectile()
     {
+        soundManager.PlayCannon();
+
         // Find the player's position
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
